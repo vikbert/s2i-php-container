@@ -7,7 +7,7 @@ echo "---> Installing application source..."
 mv /tmp/src/* ./
 
 if [ -f composer.json ]; then
-  echo "Found 'composer.json', ##### installing dependencies using composer.phar... "
+  echo "Found 'composer.json', #####  cinstalling dependencies using composer.phar... "
 
   # Install Composer
   php -r "readfile('https://getcomposer.org/installer');" | php
@@ -18,7 +18,8 @@ if [ -f composer.json ]; then
   fi
 
   # Install App dependencies using Composer
-  ./composer.phar install --no-interaction --no-ansi --optimize-autoloader
+
+  php -n -d extension=json.so ./composer.phar install --no-interaction --no-ansi --optimize-autoloader
 
   if [ ! -f composer.lock ]; then
     echo -e "\nConsider adding a 'composer.lock' file into your source repository.\n"
